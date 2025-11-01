@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
-
 <body>
     <div class="page-container">
-            <div class="header">Хэдер</div>
+            <header class="header"> 
+                <h1>Хэдер</h1> 
+            </header>
 
-            <div class="nav">
+            <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
@@ -21,7 +22,8 @@
                     <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
                 </ul>
-            </div>
+            </nav>
+
 
             <div class="content">
                 <div class="profile-header">
@@ -31,41 +33,46 @@
                     <p class="profile-group">ЭФБО-08-24</p>
                 </div>
 
-                <div class="about-me">
-                    <p>Обо мне: meow ^..^</p>
-                </div>
+
+                <section class="about-me">
+                    <h2>Обо мне:</h2>
+                    <p> meow ^..^
+                </section>
                 
-                <div class="skills-container">
-                    <div class="skill-tag">Навык 1</div>
-                    <div class="skill-tag">Навык 2</div>
-                    <div class="skill-tag">Навык 3</div>
-                    <div class="skill-tag">Навык 4</div>
-                </div>
 
-                <div class="experience-section">
+                <section class="skills-container">
+                    <h2>Мои навыки</h2>
+                    <div class="skills-grid">
+                        <div class="skill-tag">Навык 1</div>
+                        <div class="skill-tag">Навык 2</div>
+                        <div class="skill-tag">Навык 3</div>
+                        <div class="skill-tag">Навык 4</div>
+                    </div>
+                </section>
+
+
+                <section class="experience-section">
                     <h2 class="section-title">Мой опыт работы</h2>
-
-                    <div class="experience-card">
-                        <h3 class="experience-title">Опыт 1</h3>
-                        <p class="experience-desc">Работала котом.спала и ела.</p>
+                    <div class="experience-grid">
+                        <article class="experience-card">
+                            <h3 class="experience-title">Опыт 1</h3>
+                            <p class="experience-desc">Работала котом.спала и ела.</p>
+                        </article>
+                        <article class="experience-card">
+                            <h3 class="experience-title">Опыт 2</h3>
+                            <p class="experience-desc">Работала няней(у меня был брат и не было выбора).</p>
+                        </article>
+                        <article class="experience-card">
+                            <h3 class="experience-title">Опыт 3</h3>
+                            <p class="experience-desc">Работала мышью.притворялась мертвой если от меня что-то хотели.</p>
+                        </article>
                     </div>
+                </section>
+            </main>
 
-                    <div class="experience-card">
-                        <h3 class="experience-title">Опыт 2</h3>
-                        <p class="experience-desc">Работала няней(у меня был брат и не было выбора).</p>
-                    </div>
-
-                    <div class="experience-card">
-                        <h3 class="experience-title">Опыт 3</h3>
-                        <p class="experience-desc">Работала мышью.притворялась мертвой если от меня что-то хотели.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="footer">Футер</div>    
-    </div>
+            <footer class="footer">
+                <p>футер</p>
+            </footer> 
         </div>
-    </div>
-</body>
+    </body>
 </html>
