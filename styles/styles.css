@@ -183,6 +183,8 @@ body {
     font-weight: 600;
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
+    min-width: 120px;
+    text-align: center;
 }
 
 .skill:hover {
@@ -204,6 +206,10 @@ body {
 }
 
 /* Блок projects */
+.projects {
+    margin-bottom: var(--space-lg);
+}
+
 .projects__title {
     color: var(--color-main);
     margin-bottom: var(--space-md);
@@ -225,6 +231,7 @@ body {
     box-shadow: var(--shadow);
     border-left: 5px solid var(--color-accent);
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .project-card:hover {
@@ -242,6 +249,16 @@ body {
 .project-card__desc {
     color: var(--color-text);
     line-height: 1.6;
+    margin-bottom: var(--space-sm);
+}
+
+.project-card__price {
+    color: var(--color-green-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 2px dashed var(--color-accent);
 }
 
 /* Блок footer */
@@ -332,6 +349,105 @@ body {
 .contacts__button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(255, 152, 0, 0.4);
+}
+
+/* Стили для страницы practices */
+.practices {
+    margin-bottom: var(--space-lg);
+}
+
+.practices__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-md);
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+/* Стили для страницы goods */
+.goods-section {
+    margin-bottom: var(--space-lg);
+}
+
+.goods-section__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-md);
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.goods-section__description {
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+    font-size: 1.1rem;
+}
+
+.goods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+}
+
+.good-card {
+    background: linear-gradient(135deg, var(--color-green-light) 0%, var(--color-brown-light) 100%);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--color-green-dark);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.good-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(93, 64, 55, 0.15);
+}
+
+.good-card__image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: var(--radius);
+    margin-bottom: var(--space-md);
+    border: 3px solid var(--color-accent);
+}
+
+.good-card__title {
+    color: var(--color-main);
+    margin-bottom: var(--space-sm);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.good-card__description {
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+}
+
+.good-card__price {
+    color: var(--color-green-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+}
+
+.good-card__button {
+    background: linear-gradient(135deg, var(--color-accent) 0%, #ff5722 100%);
+    color: var(--color-white);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.good-card__button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
 }
 
 /* Стили для модального окна */
@@ -490,6 +606,10 @@ dialog {
         grid-template-columns: 1fr;
     }
     
+    .goods-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .contacts__list {
         grid-template-columns: 1fr;
     }
@@ -501,6 +621,10 @@ dialog {
     .btn {
         width: 100%;
     }
+    
+    .good-card {
+        padding: var(--space-md);
+    }
 }
 
 @media (max-width: 600px) {
@@ -511,5 +635,16 @@ dialog {
     
     .main {
         padding: var(--space-md);
+    }
+    
+    .header__title {
+        font-size: 1.8rem;
+    }
+    
+    .about__title,
+    .skills__title,
+    .projects__title,
+    .contacts__title {
+        font-size: 1.4rem;
     }
 }
