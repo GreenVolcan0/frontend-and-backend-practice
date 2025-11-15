@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты - Портфолио</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="header__logo">
+                <img src="../images/icons/logo.png" alt="Логотип" class="logo">
+            </div>
+            <h1 class="header__title">Беляева Анна Павловна</h1>
+        </header>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="projects.html">Проекты</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="diary.html">Дневник</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main">
+            <div class="page-header">
+                <h2 class="page-title">Мои проекты</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="web">Веб-сайты</button>
+                    <button class="filter-btn" data-filter="app">Приложения</button>
+                    <button class="filter-btn" data-filter="js">JavaScript</button>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Проекты будут добавляться через JavaScript -->
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">© 2025 Контакты</p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно для проектов -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"></h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="" alt="" class="project-modal-image">
+                </div>
+                <p class="modal-description"></p>
+                <div class="project-tech"></div>
+                <div class="project-features">
+                    <h4>Особенности:</h4>
+                    <ul class="features-list"></ul>
+                </div>
+                <div class="modal-links">
+                    <a href="#" class="modal-link live" target="_blank">
+                        <img src="../images/icons/external-link.svg" alt=""> Живая версия
+                    </a>
+                    <a href="#" class="modal-link github" target="_blank">
+                        <img src="../images/icons/github.svg" alt=""> Исходный код
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/filters.js"></script>
+    <script src="../scripts/modal.js"></script>
+</body>
+</html>

@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты</title>
+    <title>Контакты - Портфолио</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
-
 <body>
     <div class="page">
-
-        <header class="header"> 
-            <h1 class="header__title">Контакты</h1> 
+        <header class="header">
+            <div class="header__logo">
+                <img src="../images/icons/logo.png" alt="Логотип" class="logo">
+            </div>
+            <h1 class="header__title">Беляева Анна Павловна</h1>
         </header>
 
         <nav class="nav">
@@ -19,157 +20,64 @@
                 <li class="nav__item">
                     <a class="nav__link" href="../index.html">Главная</a>
                 </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="projects.html">Проекты</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="diary.html">Дневник</a>
+                </li>
                 <li class="nav__item nav__item--active">
-                    <a class="nav__link" href="../pages/news.html">Новости</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="../pages/contacts.html">Контакты</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="../pages/goods.html">Товары</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="../pages/practices.html">Практики</a>
+                    <a class="nav__link" href="contacts.html">Контакты</a>
                 </li>
             </ul>
         </nav>
 
         <main class="main">
-            <section class="contacts">
-                <h2 class="contacts__title">Наши контакты</h2>
-                
-                <div class="contacts__list">
-                    <div class="contact-item">
-                        <h3 class="contact-item__title">Электронная почта</h3>
-                        <p class="contact-item__value">belyaeva.a.p@edu.mirea.ru</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <h3 class="contact-item__title">Физический адрес</h3>
-                        <p class="contact-item__value">г. Лондон, Бейкер-стрит, 221-Б</p>
-                    </div>
+            <section class="contacts-section">
+                <h2 class="contacts-section__title">Свяжитесь со мной</h2>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Имя:</label>
+                            <input type="text" id="name" class="form-input" placeholder="Введите ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" id="email" class="form-input" placeholder="Введите ваш email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Сообщение:</label>
+                            <textarea id="message" class="form-textarea" placeholder="Введите ваше сообщение" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </section>
 
+            <section class="contacts-info">
+                <h3 class="contacts-info__title">Контакты:</h3>
+                <div class="contact-items">
                     <div class="contact-item">
-                        <h3 class="contact-item__title">Телефон</h3>
-                        <p class="contact-item__value">+7 (мяу) мур-кс-кс</p>
+                        <img src="../images/icons/email.png" alt="Email" class="contact-icon">
+                        <span class="contact-text">student@edu.ru</span>
                     </div>
-                    
                     <div class="contact-item">
-                        <h3 class="contact-item__title">Время работы</h3>
-                        <p class="contact-item__value">Пн-Пт: 9:00-18:00</p>
+                        <img src="../images/icons/github.png" alt="GitHub" class="contact-icon">
+                        <span class="contact-text">GitHub: GreenVolcan0</span>
                     </div>
-                    
                     <div class="contact-item">
-                        <h3 class="contact-item__title">Социальные сети</h3>
-                        <p class="contact-item__value">Telegram, WhatsApp</p>
+                        <img src="../images/icons/location.png" alt="Местоположение" class="contact-icon">
+                        <span class="contact-text">Россия, Москва</span>
                     </div>
                 </div>
-                
-                <button class="contacts__button" onclick="contactModal.showModal()">Связаться с нами</button>
             </section>
         </main>
 
         <footer class="footer">
-            <p class="footer__text">&copy; 2025 Все права защищены. Контактная информация</p>
+            <p class="footer__text">© 2025 Контакты</p>
         </footer>
-
-        <!-- Модальное окно для формы обратной связи -->
-        <dialog id="contactModal">
-            <div class="modal-header">
-                <h2>Форма обратной связи</h2>
-            </div>
-            
-            <div class="modal-content">
-                <form id="feedbackForm" method="dialog">
-                    <div class="form-group">
-                        <label for="name">Имя <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Телефон <span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Электронная почта <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required placeholder="example@mail.ru">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="category">Категория обращения <span class="required">*</span></label>
-                        <select id="category" name="category" required>
-                            <option value="">Выберите категорию</option>
-                            <option value="technical">Техническая поддержка</option>
-                            <option value="commercial">Коммерческое предложение</option>
-                            <option value="cooperation">Сотрудничество</option>
-                            <option value="complaint">Жалоба</option>
-                            <option value="suggestion">Предложение</option>
-                            <option value="other">Другое</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Текст обращения <span class="required">*</span></label>
-                        <textarea id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
-                    </div>
-
-                    <div class="modal-actions">
-                        <button type="submit" class="btn btn-secondary">Отмена</button>
-                        <button type="button" class="btn btn-primary" onclick="submitForm()">Отправить</button>
-                    </div>
-                </form>
-            </div>
-        </dialog>
     </div>
 
-    <script>
-        // Функция для отправки формы
-        function submitForm() {
-            const form = document.getElementById('feedbackForm');
-            const formData = new FormData(form);
-            
-            // Простая валидация
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            // Собираем данные формы
-            const data = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                email: formData.get('email'),
-                category: formData.get('category'),
-                message: formData.get('message')
-            };
-
-            // В реальном приложении здесь был бы AJAX-запрос
-            console.log('Данные формы:', data);
-            
-            // Показываем уведомление об успешной отправке
-            alert('Спасибо! Ваше обращение отправлено. Мы свяжемся с вами в ближайшее время.');
-            
-            // Закрываем модальное окно
-            contactModal.close();
-            
-            // Очищаем форму
-            form.reset();
-        }
-
-        // Закрытие модального окна по клику на фон
-        document.getElementById('contactModal').addEventListener('click', function(event) {
-            if (event.target === this) {
-                this.close();
-            }
-        });
-
-        // Обработка отправки формы через Enter (предотвращаем стандартное поведение)
-        document.getElementById('feedbackForm').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter' && event.target.type !== 'textarea') {
-                event.preventDefault();
-            }
-        });
-    </script>
+    <script src="../scripts/form-validation.js"></script>
 </body>
 </html>
