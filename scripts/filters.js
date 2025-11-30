@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Инициализация фильтров
 function initProjectsFilter() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
     
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -57,7 +56,7 @@ function loadProjectsData() {
             technologies: ["JavaScript", "React", "LocalStorage", "CSS3"],
             demoLink: "#",
             githubLink: "#",
-            category: "app js", // Принадлежит к категориям "app" и "js"
+            category: "app js",
             features: [
                 "Техника Pomodoro",
                 "Статистика продуктивности",
@@ -73,7 +72,7 @@ function loadProjectsData() {
             technologies: ["HTML5", "CSS3", "JavaScript", "Responsive"],
             demoLink: "#",
             githubLink: "#",
-            category: "web js", // Принадлежит к категориям "web" и "js"
+            category: "web js",
             features: [
                 "Адаптивный дизайн",
                 "Оптимизация производительности",
@@ -89,7 +88,7 @@ function loadProjectsData() {
             technologies: ["HTML5", "CSS3", "JavaScript", "Canvas"],
             demoLink: "https://greenvolcan0.github.io/meow-web/",
             githubLink: "#",
-            category: "web js", // Принадлежит к категориям "web" и "js"
+            category: "web js",
             features: [
                 "Интерактивные анимации",
                 "Мини-игры",
@@ -106,7 +105,7 @@ function loadProjectsData() {
             technologies: ["React", "JavaScript", "GPS API", "Chart.js"],
             demoLink: "#",
             githubLink: "#",
-            category: "app js", // Принадлежит к категориям "app" и "js"
+            category: "app js",
             features: [
                 "Отслеживание маршрутов",
                 "Статистика тренировок",
@@ -155,7 +154,7 @@ function createProjectCard(project) {
         </div>
         <div class="project-card__content">
             <h3 class="project-card__title">${project.title}</h3>
-            <p class="project-card__description">${project.description.substring(0, 100)}...</p>
+            <p class="project-card__description">${project.description}</p>
             <div class="project-card__tech">
                 ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
             </div>

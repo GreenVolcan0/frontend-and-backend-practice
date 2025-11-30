@@ -8,44 +8,65 @@ window.openProjectModal = function(projectId) {
     const projectsData = [
         {
             id: 1,
-            title: "Личный сайт",
-            description: "Современный адаптивный сайт-портфолио, разработанный с использованием HTML5 и CSS3. Сайт включает в себя разделы 'Обо мне', 'Навыки', 'Проекты' и 'Контакты'. Реализована адаптивная верстка для корректного отображения на всех устройствах. Проект демонстрирует навыки семантической верстки и работы с современными CSS-технологиями.",
-            image: "../images/project1.jpg",
-            technologies: ["HTML", "CSS"],
-            demoLink: "https://example.com/demo1",
-            githubLink: "https://github.com/username/project1",
-            features: ["Адаптивный дизайн", "Семантическая верстка", "CSS Grid & Flexbox", "Оптимизация производительности"]
+            title: "Тайм-менеджмент приложение",
+            description: "Инновационное приложение для управления временем и повышения продуктивности. Включает планировщик задач, таймер Pomodoro, статистику продуктивности и умные уведомления. Идеально подходит для студентов и профессионалов.",
+            image: "../images/project3.png",
+            technologies: ["JavaScript", "React", "LocalStorage", "CSS3"],
+            demoLink: "#",
+            githubLink: "#",
+            features: [
+                "Техника Pomodoro",
+                "Статистика продуктивности",
+                "Умные уведомления",
+                "Экспорт данных"
+            ]
         },
         {
             id: 2,
-            title: "Todo-приложение",
-            description: "Интерактивное приложение для управления задачами с использованием JavaScript. Функционал включает добавление, удаление, редактирование и отметку выполненных задач. Данные сохраняются в локальном хранилище браузера. Приложение демонстрирует работу с DOM, обработку событий и использование Local Storage.",
-            image: "../images/project2.jpg",
-            technologies: ["HTML", "CSS", "JavaScript"],
-            demoLink: "https://example.com/demo2",
-            githubLink: "https://github.com/username/project2",
-            features: ["Drag & Drop", "Local Storage", "Фильтрация задач", "Темная тема"]
+            title: "Личный сайт-портфолио",
+            description: "Современный адаптивный веб-сайт портфолио с акцентом на пользовательский опыт. Чистый дизайн, оптимизированная производительность и семантическая верстка. Полностью адаптирован под мобильные устройства.",
+            image: "../images/project1.png",
+            technologies: ["HTML5", "CSS3", "JavaScript", "Responsive"],
+            demoLink: "#",
+            githubLink: "#",
+            features: [
+                "Адаптивный дизайн",
+                "Оптимизация производительности",
+                "Семантическая верстка",
+                "PWA готовность"
+            ]
         },
         {
             id: 3,
-            title: "Интернет-магазин",
-            description: "Полнофункциональный интернет-магазин с корзиной и системой заказов, разработанный на React. Включает каталог товаров, фильтрацию по категориям, поиск, корзину и оформление заказа. Использованы современные подходы к управлению состоянием приложения.",
-            image: "../images/project3.jpg",
-            technologies: ["React", "JavaScript", "CSS Modules"],
-            demoLink: "https://example.com/demo3",
-            githubLink: "https://github.com/username/project3",
-            features: ["Корзина покупок", "Поиск товаров", "Фильтрация", "Адаптивный дизайн"]
+            title: "Сайт-прикол",
+            description: "Интерактивный развлекательный веб-сайт с юмористическим контентом. Создан для поднятия настроения с использованием современных веб-технологий и креативных анимаций.",
+            image: "../images/project2.png",
+            technologies: ["HTML5", "CSS3", "JavaScript", "Canvas"],
+            demoLink: "https://greenvolcan0.github.io/meow-web/",
+            githubLink: "#",
+            features: [
+                "Интерактивные анимации",
+                "Мини-игры",
+                "Адаптивный дизайн",
+                "Веселые эффекты"
+            ],
+            isExternal: true
         },
         {
             id: 4,
-            title: "Портфолио на Bootstrap",
-            description: "Адаптивное портфолио с использованием фреймворка Bootstrap 5. Включает современный дизайн, адаптивную сетку, навигацию и интерактивные элементы. Проект демонстрирует навыки работы с популярными CSS-фреймворками.",
+            title: "Приложение для вело-спортсменов",
+            description: "Специализированное приложение для велосипедистов с отслеживанием маршрутов, статистикой тренировок и социальными функциями. Интеграция с GPS и датчиками для точных измерений.",
             image: "../images/project4.jpg",
-            technologies: ["Bootstrap", "HTML", "CSS"],
-            demoLink: "https://example.com/demo4",
-            githubLink: "https://github.com/username/project4",
-            features: ["Bootstrap 5", "Адаптивная сетка", "Карусель проектов", "Модальные окна"]
-        },
+            technologies: ["React", "JavaScript", "GPS API", "Chart.js"],
+            demoLink: "#",
+            githubLink: "#",
+            features: [
+                "Отслеживание маршрутов",
+                "Статистика тренировок",
+                "Социальные функции",
+                "GPS интеграция"
+            ]
+        }
     ];
     
     const project = projectsData.find(p => p.id === parseInt(projectId));
@@ -56,6 +77,11 @@ window.openProjectModal = function(projectId) {
 
 // Инициализация модальных окон
 function initProjectModals() {
+    // Создаем модальное окно для проектов, если его нет
+    if (!document.getElementById('project-modal')) {
+        createProjectModal();
+    }
+    
     const modal = document.getElementById('project-modal');
     if (!modal) return;
     
@@ -78,6 +104,30 @@ function initProjectModals() {
     });
 }
 
+// Создание модального окна для проектов
+function createProjectModal() {
+    const modalHTML = `
+        <div id="project-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Проект</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="" class="project-modal-image" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--space-md);">
+                    <p class="modal-description" style="margin-bottom: var(--space-md);"></p>
+                    <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-bottom: var(--space-md);"></div>
+                    <div class="modal-links" style="display: flex; gap: var(--space-md);">
+                        <a href="#" class="button button--primary modal-link live" target="_blank">Посмотреть демо</a>
+                        <a href="#" class="button button--outline modal-link github" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
 // Показать модальное окно проекта
 function showProjectModal(project) {
     const modal = document.getElementById('project-modal');
@@ -92,14 +142,26 @@ function showProjectModal(project) {
     // Технологии
     const techContainer = modal.querySelector('.project-tech');
     techContainer.innerHTML = project.technologies.map(tech => 
-        `<span class="tech-tag ${tech.toLowerCase()}">${tech}</span>`
+        `<span class="tech-tag">${tech}</span>`
     ).join('');
     
     // Ссылки
     const demoLink = modal.querySelector('.modal-link.live');
     const githubLink = modal.querySelector('.modal-link.github');
-    demoLink.href = project.demoLink;
-    githubLink.href = project.githubLink;
+    
+    if (project.demoLink && project.demoLink !== '#') {
+        demoLink.href = project.demoLink;
+        demoLink.style.display = 'inline-block';
+    } else {
+        demoLink.style.display = 'none';
+    }
+    
+    if (project.githubLink && project.githubLink !== '#') {
+        githubLink.href = project.githubLink;
+        githubLink.style.display = 'inline-block';
+    } else {
+        githubLink.style.display = 'none';
+    }
     
     // Показать модальное окно
     modal.style.display = 'block';
@@ -122,62 +184,4 @@ function closeProjectModal() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }, 300);
-}
-
-// Управление галереей изображений в модальном окне
-function initImageGallery() {
-    const galleryImages = document.querySelectorAll('.gallery-image');
-    const galleryModal = document.createElement('div');
-    galleryModal.className = 'gallery-modal';
-    galleryModal.innerHTML = `
-        <div class="gallery-modal-content">
-            <button class="gallery-close">&times;</button>
-            <button class="gallery-prev">‹</button>
-            <img src="" alt="" class="gallery-main-image">
-            <button class="gallery-next">›</button>
-        </div>
-    `;
-    document.body.appendChild(galleryModal);
-    
-    let currentImageIndex = 0;
-    const images = Array.from(galleryImages);
-    
-    galleryImages.forEach((img, index) => {
-        img.addEventListener('click', () => {
-            currentImageIndex = index;
-            openGalleryModal();
-        });
-    });
-    
-    function openGalleryModal() {
-        galleryModal.style.display = 'block';
-        updateGalleryImage();
-    }
-    
-    function updateGalleryImage() {
-        const mainImage = galleryModal.querySelector('.gallery-main-image');
-        mainImage.src = images[currentImageIndex].src;
-        mainImage.alt = images[currentImageIndex].alt;
-    }
-    
-    // Навигация по галерее
-    galleryModal.querySelector('.gallery-prev').addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-        updateGalleryImage();
-    });
-    
-    galleryModal.querySelector('.gallery-next').addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        updateGalleryImage();
-    });
-    
-    galleryModal.querySelector('.gallery-close').addEventListener('click', () => {
-        galleryModal.style.display = 'none';
-    });
-    
-    galleryModal.addEventListener('click', (e) => {
-        if (e.target === galleryModal) {
-            galleryModal.style.display = 'none';
-        }
-    });
 }
