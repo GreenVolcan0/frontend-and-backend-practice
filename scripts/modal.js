@@ -46,26 +46,6 @@ window.openProjectModal = function(projectId) {
             githubLink: "https://github.com/username/project4",
             features: ["Bootstrap 5", "Адаптивная сетка", "Карусель проектов", "Модальные окна"]
         },
-        {
-            id: 5,
-            title: "Игра 'Память'",
-            description: "Классическая игра на запоминание карточек с подсчетом очков и таймером. Реализованы различные уровни сложности и система рекордов. Проект демонстрирует работу с таймерами, анимациями и игровой логикой.",
-            image: "../images/project2.jpg",
-            technologies: ["JavaScript", "HTML", "CSS"],
-            demoLink: "https://example.com/demo5",
-            githubLink: "https://github.com/username/project5",
-            features: ["Таймер", "Уровни сложности", "Система очков", "Анимации"]
-        },
-        {
-            id: 6,
-            title: "Погодное приложение",
-            description: "Приложение для просмотра погоды с использованием API и React. Отображает текущую погоду, прогноз на несколько дней, а также дополнительные метеоданные. Интегрировано с открытым Weather API.",
-            image: "../images/project3.jpg",
-            technologies: ["React", "JavaScript", "API", "CSS"],
-            demoLink: "https://example.com/demo6",
-            githubLink: "https://github.com/username/project6",
-            features: ["Работа с API", "Геолокация", "Прогноз погоды", "Иконки погоды"]
-        }
     ];
     
     const project = projectsData.find(p => p.id === parseInt(projectId));

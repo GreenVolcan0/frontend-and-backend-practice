@@ -79,6 +79,10 @@ function validateAllFields(form) {
     let allValid = true;
     
     fields.forEach(field => {
+        // Создаем искусственное событие для валидации
+        const event = new Event('blur', { bubbles: true });
+        field.dispatchEvent(event);
+        
         const isValid = validateField({ target: field });
         if (!isValid) allValid = false;
     });
@@ -105,7 +109,7 @@ function showFieldError(field, message) {
     errorElement.className = 'field-error';
     errorElement.textContent = message;
     errorElement.style.cssText = `
-        color: #e74c3c;
+        color: var(--error-color);
         font-size: 0.8rem;
         margin-top: 4px;
         animation: fadeIn 0.3s ease;
@@ -169,21 +173,53 @@ function submitForm(data, form) {
 
 // Показать успешное сообщение формы
 function showFormSuccess(message) {
-    if (typeof showNotification === 'function') {
-        showNotification(message, 'success');
-    } else {
-        // Fallback уведомление
-        alert(message);
-    }
+    showNotification(message, 'success');
 }
 
 // Показать ошибку формы
 function showFormError(message) {
-    if (typeof showNotification === 'function') {
-        showNotification(message, 'error');
-    } else {
-        alert(message);
-    }
+    showNotification(message, 'error');
+}
+
+// Функция показа уведомлений
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification--${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-icon">${type === 'success' ? '✓' : 'ℹ'}</span>
+            <span class="notification-text">${message}</span>
+            <button class="close-notification">&times;</button>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Анимация появления
+    setTimeout(() => notification.classList.add('notification--show'), 100);
+    
+    // Закрытие уведомления
+    const closeBtn = notification.querySelector('.close-notification');
+    closeBtn.addEventListener('click', () => {
+        notification.classList.remove('notification--show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    });
+    
+    // Автоматическое закрытие
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.classList.remove('notification--show');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }
+    }, 5000);
 }
 
 // Анимации для формы
@@ -202,49 +238,8 @@ function initFormAnimations() {
     });
 }
 
-// Валидация для других форм (если понадобятся)
-const FormValidator = {
-    // Валидация номера телефона
-    validatePhone: function(phone) {
-        const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
-        return phoneRegex.test(phone.replace(/\s/g, ''));
-    },
-    
-    // Валидация URL
-    validateURL: function(url) {
-        try {
-            new URL(url);
-            return true;
-        } catch {
-            return false;
-        }
-    },
-    
-    // Валидация пароля
-    validatePassword: function(password) {
-        return password.length >= 8 &&
-               /[A-Z]/.test(password) &&
-               /[a-z]/.test(password) &&
-               /[0-9]/.test(password);
-    }
-};
-
-// Добавление CSS для валидации
+// Добавление CSS анимаций
 const validationStyles = `
-    .field-valid {
-        border-color: #27ae60 !important;
-        background-color: #f8fff9;
-    }
-    
-    .field-invalid {
-        border-color: #e74c3c !important;
-        background-color: #fff8f8;
-    }
-    
-    .field-error {
-        border-color: #e74c3c !important;
-    }
-    
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(-10px); }
         to { opacity: 1; transform: translateY(0); }

@@ -3,80 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дневник - Портфолио</title>
+    <title>Дневник - StudentDev Portfolio</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
     <div class="page">
+        <!-- Header -->
         <header class="header">
-            <div class="header__logo">
-                <img src="../images/icons/logo.png" alt="Логотип" class="logo">
-            </div>
-            <h1 class="header__title">Беляева Анна Павловна</h1>
+            <div class="container">
+                <div class="header__content">
+                    <h1 class="header__title">Беляева Анна Павловна</h1>
+                    <p class="header__subtitle">Студент-разработчик</p>
+                </div>
+            </div>           
         </header>
 
+        <!-- Navigation -->
         <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item">
-                    <a class="nav__link" href="../index.html">Главная</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="projects.html">Проекты</a>
-                </li>
-                <li class="nav__item nav__item--active">
-                    <a class="nav__link" href="diary.html">Дневник</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="contacts.html">Контакты</a>
-                </li>
-            </ul>
+            <div class="container">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a class="nav__link" href="../index.html">Главная</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="projects.html">Проекты</a>
+                    </li>
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="diary.html">Дневник</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
+        <!-- Main Content -->
         <main class="main">
-            <section class="diary-section">
-                <h2 class="diary-section__title">Мой учебный прогресс</h2>
-                <div class="progress-list" id="progress-list">
-                    <!-- Записи будут добавляться через JavaScript -->
-                </div>
-            </section>
+            <div class="container">
+                <!-- Прогресс обучения -->
+                <section class="diary-section">
+                    <h2 class="section__title">Мой учебный прогресс</h2>
+                    <div class="progress-timeline" id="progress-list">
+                        <!-- Записи будут добавляться через JavaScript -->
+                    </div>
+                </section>
 
-            <section class="diary-section">
-                <h2 class="diary-section__title">Текущие курсы</h2>
-                <div class="courses-list">
-                    <div class="course">
-                        <div class="course__header">
-                            <span class="course__name">Веб-разработка</span>
-                            <span class="course__percentage">90%</span>
+                <!-- Текущие курсы -->
+                <section class="courses">
+                    <h2 class="section__title">Текущие курсы</h2>
+                    <div class="courses__grid">
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">Веб-разработка</span>
+                                <span class="course__percent">90%</span>
+                            </div>
+                            <div class="course__progress">
+                                <div class="course__progress-bar" style="width: 90%"></div>
+                            </div>
                         </div>
-                        <div class="course__progress">
-                            <div class="course__progress-bar" style="width: 90%"></div>
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">JavaScript</span>
+                                <span class="course__percent">70%</span>
+                            </div>
+                            <div class="course__progress">
+                                <div class="course__progress-bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="course">
+                            <div class="course__header">
+                                <span class="course__name">React</span>
+                                <span class="course__percent">50%</span>
+                            </div>
+                            <div class="course__progress">
+                                <div class="course__progress-bar" style="width: 50%"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="course">
-                        <div class="course__header">
-                            <span class="course__name">JavaScript</span>
-                            <span class="course__percentage">70%</span>
-                        </div>
-                        <div class="course__progress">
-                            <div class="course__progress-bar" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course__header">
-                            <span class="course__name">React</span>
-                            <span class="course__percentage">50%</span>
-                        </div>
-                        <div class="course__progress">
-                            <div class="course__progress-bar" style="width: 50%"></div>
-                        </div>
-                    </div>
+                </section>
+
+                <!-- Кнопка добавления записи -->
+                <div class="add-entry-section">
+                    <button class="button button--primary" id="add-entry-btn">Добавить запись</button>
                 </div>
-                <button class="add-entry-btn" id="add-entry-btn">Добавить запись</button>
-            </section>
+            </div>
         </main>
 
+        <!-- Footer -->
         <footer class="footer">
-            <p class="footer__text">© 2025 Контакты</p>
+            <div class="container">
+                <div class="footer__content">
+                    <p class="footer__copyright">&copy; 2025 StudentDev Portfolio</p>
+                    <div class="footer__links">
+                        <a href="mailto:belyaeva.a.p@edu.mirea.ru" class="footer__link">belyaeva.a.p@edu.mirea.ru</a>
+                        <a href="https://github.com/GreenVolcan0" class="footer__link">GitHub</a>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -88,25 +112,26 @@
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="add-entry-form">
+                <form id="add-entry-form" class="add-entry__form">
                     <div class="form-group">
-                        <label for="entry-date">Дата:</label>
-                        <input type="date" id="entry-date" required>
+                        <label for="entry-date" class="form-label">Дата:</label>
+                        <input type="date" id="entry-date" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <label for="entry-text">Описание:</label>
-                        <input type="text" id="entry-text" placeholder="Что вы изучили?" required>
+                        <label for="entry-text" class="form-label">Описание:</label>
+                        <input type="text" id="entry-text" class="form-input" placeholder="Что вы изучили?" required>
                     </div>
                     <div class="form-group">
-                        <label for="entry-status">Статус:</label>
-                        <select id="entry-status" required>
+                        <label for="entry-status" class="form-label">Статус:</label>
+                        <select id="entry-status" class="form-input" required>
                             <option value="completed">Завершено</option>
                             <option value="in-progress">В процессе</option>
+                            <option value="planned">Запланировано</option>
                         </select>
                     </div>
                     <div class="modal-actions">
-                        <button type="submit" class="btn-primary">Добавить</button>
-                        <button type="button" class="btn-secondary close-modal">Отмена</button>
+                        <button type="submit" class="button button--primary">Добавить</button>
+                        <button type="button" class="button button--outline close-modal">Отмена</button>
                     </div>
                 </form>
             </div>

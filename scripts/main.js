@@ -40,8 +40,12 @@ function initNavigation() {
     const currentPage = window.location.pathname;
     
     navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPage.split('/').pop() || 
-            (currentPage.endsWith('/') && link.getAttribute('href') === 'index.html')) {
+        const linkHref = link.getAttribute('href');
+        const currentPageName = currentPage.split('/').pop();
+        
+        if (linkHref === currentPageName || 
+            (currentPage.endsWith('/') && linkHref === 'index.html') ||
+            (currentPageName === '' && linkHref === '../index.html')) {
             link.parentElement.classList.add('nav__item--active');
         }
     });
@@ -64,13 +68,13 @@ function initAnimations() {
     }, observerOptions);
     
     // Наблюдаем за элементами с анимацией
-    const animatedElements = document.querySelectorAll('.profile__card, .skills, .projects-preview, .diary-section, .contacts-section');
+    const animatedElements = document.querySelectorAll('.hero, .skills, .projects-preview, .diary-section, .contact-form-section');
     animatedElements.forEach(el => observer.observe(el));
 }
 
 // Инициализация прогресс-баров
 function initProgressBars() {
-    const progressBars = document.querySelectorAll('.skill__progress, .course__progress-bar');
+    const progressBars = document.querySelectorAll('.skill__progress-bar, .course__progress-bar');
     
     progressBars.forEach(bar => {
         const width = bar.style.width;
@@ -86,10 +90,9 @@ function initProgressBars() {
 // Функции для главной страницы
 function initIndexPage() {
     // Обработка кнопки скачивания резюме
-    const downloadBtn = document.querySelector('.profile__button');
+    const downloadBtn = document.querySelector('.hero__button');
     if (downloadBtn) {
         downloadBtn.addEventListener('click', function(e) {
-            // Можно добавить аналитику или другие действия
             console.log('Резюме скачано');
         });
     }
@@ -100,10 +103,10 @@ function initIndexPage() {
 
 // Предпросмотр проектов на главной
 function initProjectPreviews() {
-    const projectPreviews = document.querySelectorAll('.project-preview');
+    const projectCards = document.querySelectorAll('.project-card');
     
-    projectPreviews.forEach((preview, index) => {
-        preview.addEventListener('click', function() {
+    projectCards.forEach((card, index) => {
+        card.addEventListener('click', function() {
             // Перенаправление на страницу проектов
             window.location.href = 'pages/projects.html';
         });
@@ -165,6 +168,11 @@ function showAddEntryModal() {
         const today = new Date().toISOString().split('T')[0];
         const dateInput = document.getElementById('entry-date');
         if (dateInput) dateInput.value = today;
+        
+        // Анимация появления
+        setTimeout(() => {
+            modal.classList.add('modal--show');
+        }, 50);
     }
 }
 
@@ -177,14 +185,22 @@ function initModal() {
     closeButtons.forEach(button => {
         button.addEventListener('click', function() {
             const modal = this.closest('.modal');
-            if (modal) modal.style.display = 'none';
+            if (modal) {
+                modal.classList.remove('modal--show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
         });
     });
     
     // Закрытие при клике вне модального окна
     window.addEventListener('click', function(e) {
         if (e.target.classList.contains('modal')) {
-            e.target.style.display = 'none';
+            e.target.classList.remove('modal--show');
+            setTimeout(() => {
+                e.target.style.display = 'none';
+            }, 300);
         }
     });
     
@@ -224,7 +240,12 @@ function addNewEntry(form) {
     
     // Закрытие модального окна
     const modal = document.getElementById('add-entry-modal');
-    if (modal) modal.style.display = 'none';
+    if (modal) {
+        modal.classList.remove('modal--show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
     
     // Очистка формы
     form.reset();

@@ -17,13 +17,15 @@ function initProjectsFilter() {
             
             // Применение фильтра
             const filter = this.getAttribute('data-filter');
-            applyProjectFilter(filter, projectCards);
+            applyProjectFilter(filter);
         });
     });
 }
 
 // Применение фильтра к проектам
-function applyProjectFilter(filter, projects) {
+function applyProjectFilter(filter) {
+    const projects = document.querySelectorAll('.project-card');
+    
     projects.forEach(card => {
         const categories = card.getAttribute('data-category').split(' ');
         
@@ -55,7 +57,7 @@ function loadProjectsData() {
             technologies: ["JavaScript", "React", "LocalStorage", "CSS3"],
             demoLink: "#",
             githubLink: "#",
-            category: "app js",
+            category: "app js", // Принадлежит к категориям "app" и "js"
             features: [
                 "Техника Pomodoro",
                 "Статистика продуктивности",
@@ -71,7 +73,7 @@ function loadProjectsData() {
             technologies: ["HTML5", "CSS3", "JavaScript", "Responsive"],
             demoLink: "#",
             githubLink: "#",
-            category: "web js",
+            category: "web js", // Принадлежит к категориям "web" и "js"
             features: [
                 "Адаптивный дизайн",
                 "Оптимизация производительности",
@@ -87,7 +89,7 @@ function loadProjectsData() {
             technologies: ["HTML5", "CSS3", "JavaScript", "Canvas"],
             demoLink: "https://greenvolcan0.github.io/meow-web/",
             githubLink: "#",
-            category: "web js",
+            category: "web js", // Принадлежит к категориям "web" и "js"
             features: [
                 "Интерактивные анимации",
                 "Мини-игры",
@@ -104,7 +106,7 @@ function loadProjectsData() {
             technologies: ["React", "JavaScript", "GPS API", "Chart.js"],
             demoLink: "#",
             githubLink: "#",
-            category: "app js",
+            category: "app js", // Принадлежит к категориям "app" и "js"
             features: [
                 "Отслеживание маршрутов",
                 "Статистика тренировок",
@@ -155,7 +157,7 @@ function createProjectCard(project) {
             <h3 class="project-card__title">${project.title}</h3>
             <p class="project-card__description">${project.description.substring(0, 100)}...</p>
             <div class="project-card__tech">
-                ${project.technologies.map(tech => `<span class="tech-tag ${tech.toLowerCase()}">${tech}</span>`).join('')}
+                ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
             </div>
             ${project.isExternal ? '<div class="external-hint">Нажмите для перехода на сайт</div>' : ''}
         </div>
@@ -185,6 +187,9 @@ function handleProjectClick(project) {
         // Для внутренних проектов открываем модальное окно
         if (typeof window.openProjectModal === 'function') {
             window.openProjectModal(project.id);
+        } else {
+            // Если модального окна нет, просто показываем alert
+            alert(`Проект: ${project.title}\n\n${project.description}`);
         }
     }
 }
