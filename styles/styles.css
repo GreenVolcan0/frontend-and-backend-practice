@@ -103,7 +103,7 @@ body {
 
 /* Navigation */
 .nav {
-    background: var(--primary-color);
+    background: var(--primary-dark);
     position: sticky;
     top: 0;
     z-index: 100;
